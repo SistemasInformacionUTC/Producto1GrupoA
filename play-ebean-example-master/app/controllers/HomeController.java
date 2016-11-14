@@ -137,11 +137,11 @@ public class HomeController  extends Controller {
     }
     
     //MEMORIA RAM
-    public Result list1(int page, String sortBy, String order, String filter) {
+    public Result list1(int page1, String sortBy1, String order1, String filter1) {
         return ok(
             views.html.list1.render(
-                Mram.page(page, 10, sortBy, order, filter),
-                sortBy, order, filter
+                Mram.page(page1, 11, sortBy1, order1, filter1),
+                sortBy1, order1, filter1
             )
         );
     }

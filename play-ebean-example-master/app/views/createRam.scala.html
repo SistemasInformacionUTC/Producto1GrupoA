@@ -1,4 +1,4 @@
-@(computerForm: Form[Computer])
+@(mramForm: Form[Mram])
 
 @import helper._
 
@@ -8,15 +8,16 @@
     
     <h1>Add a Mram</h1>
     
-    @b3.form(routes.HomeController.save()) {
+    @b3.form(routes.HomeController.save1()) {
         
         <fieldset>
-            @b3.text(computerForm("name"), '_label -> "Computer name", '_help -> "")
-            @b3.date(computerForm("introduced"), '_label -> "Introduced date", '_help -> "")
-            @b3.date(computerForm("discontinued"), '_label -> "Discontinued date", '_help -> "")
+            @b3.text(mramForm("tipo"), '_label -> "tipo Ram", '_help -> "")
+            @b3.text(mranForm("fabricante"), '_label -> "Fabricante", '_help -> "")
+            @b3.text(mramForm("capacidad"), '_label -> "Capacidad", '_help -> "")
+            @b3.text(mramForm("Pines"), '_label -> "Pines", '_help -> "")
 
             @b3.select(
-                computerForm("company.id"), 
+                mramForm("company.id"), 
                 options(Company.options), 
                 '_label -> "Company", '_default -> "-- Choose a company --",
                 '_showConstraints -> false
@@ -25,7 +26,7 @@
         
         <div class="actions">
             <input type="submit" value="Create this computer" class="btn primary"> or 
-            <a href="@routes.HomeController.list()" class="btn">Cancel</a>
+            <a href="@routes.HomeController.list1()" class="btn">Cancel</a>
         </div>
         
     }
