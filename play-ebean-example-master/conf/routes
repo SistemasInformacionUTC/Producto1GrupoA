@@ -11,13 +11,19 @@ GET     /computers                  controllers.HomeController.list(p:Int ?= 0, 
 # Add computer
 GET     /computers/new              controllers.HomeController.create()
 POST    /computers                  controllers.HomeController.save()
+GET     /discos/new              controllers.HomeController.create()
+POST    /discos                  controllers.HomeController.save()
+
 
 # Edit existing computer
 GET     /computers/:id              controllers.HomeController.edit(id:Long)
 POST    /computers/:id              controllers.HomeController.update(id:Long)
+GET     /discos/:id              controllers.HomeController.edit(id:Long)
+POST    /discos/:id              controllers.HomeController.update(id:Long)
 
 # Delete a computer
 POST    /computers/:id/delete       controllers.HomeController.delete(id:Long)
+POST    /discos/:id/delete       controllers.HomeController.delete(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
