@@ -23,7 +23,7 @@ public class Mram extends Model {
 	    public String tipo;
 	    
 	    @Constraints.Required
-	    public String fabricante;
+	    public String fabricantes;
 	    
 	    @Constraints.Required
 	    public String capacidadm;
