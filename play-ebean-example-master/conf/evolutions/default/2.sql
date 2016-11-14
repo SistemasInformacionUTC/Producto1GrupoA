@@ -620,6 +620,12 @@ insert into computer (id,name,introduced,discontinued,company_id) values (572,'D
 insert into computer (id,name,introduced,discontinued,company_id) values (573,'Gateway LT3103U','2008-01-01',null,null);
 insert into computer (id,name,introduced,discontinued,company_id) values (574,'iPhone 4S','2011-10-14',null,1);
 
+
+
+insert into computer (id,name,introduced,discontinued,company_id) values (1,'DDR3','Sony',,'4MB','126',1);
+insert into computer (id,name,introduced,discontinued,company_id) values (2,'DDR4','Kinstong',,'2MB','120',2);
+insert into computer (id,name,introduced,discontinued,company_id) values (3,'DDR2','Samsung',,'4MB','136',3);
+
 # --- !Downs
 
 delete from computer;

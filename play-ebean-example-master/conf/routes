@@ -11,6 +11,9 @@ GET     /computers                  controllers.HomeController.list(p:Int ?= 0, 
 # Add computer
 GET     /computers/new              controllers.HomeController.create()
 POST    /computers                  controllers.HomeController.save()
+# Add mram
+GET     /mram/new              controllers.HomeController.create1()
+POST    /mram                  controllers.HomeController.save1()
 
 # Edit existing computer
 GET     /computers/:id              controllers.HomeController.edit(id:Long)
