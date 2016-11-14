@@ -620,7 +620,13 @@ insert into computer (id,name,introduced,discontinued,company_id) values (572,'D
 insert into computer (id,name,introduced,discontinued,company_id) values (573,'Gateway LT3103U','2008-01-01',null,null);
 insert into computer (id,name,introduced,discontinued,company_id) values (574,'iPhone 4S','2011-10-14',null,1);
 
+insert into microprocesador (id,velocidad,capacidad, computer_id) values (  1,300,200,1);
+insert into microprocesador (id,velocidad,capacidad, computer_id) values (  2,300,200,2);
+insert into microprocesador (id,velocidad,capacidad, computer_id) values (  3,300,200,3);
+
 # --- !Downs
 
 delete from computer;
 delete from company;
+delete from microprocesador;
+
