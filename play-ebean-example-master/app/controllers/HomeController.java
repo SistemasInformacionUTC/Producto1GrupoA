@@ -151,14 +151,14 @@ public class HomeController  extends Controller {
      *
      * @param id Id of the computer to edit
      */
-    /** public Result edit1(Long id) {
-        Form<Mram> computerForm = formFactory.form(Computer.class).fill(
-            Computer.find.byId(id)
+     public Result edit1(Long id) {
+        Form<Mram> mramForm = formFactory.form(Mram.class).fill(
+            Mram.find.byId(id)
         );
         return ok(
-            views.html.editForm.render(id, computerForm)
+            views.html.editForm1.render(id, mramForm)
         );
-    } */
+    } 
     /**
      * Handle the 'edit form' submission 
      *
@@ -193,40 +193,40 @@ public class HomeController  extends Controller {
     /**
      * Display the 'new computer form'.
      */
-    public Result create() {
-        Form<Computer> computerForm = formFactory.form(Computer.class);
+    public Result create1() {
+        Form<Mram> mramForm = formFactory.form(Mram.class);
         return ok(
-                views.html.createForm.render(computerForm)
+                views.html.createRam.render(mramForm)
         );
     }
     
     /**
      * Handle the 'new computer form' submission 
      */
-    private static long cont=574;
-    public Result save() {
+    private static long cont1=574;
+    public Result save1() {
     	
-    	Computer c1= new Computer(); //objeto k guarla los datos de la interfaz
-        Form<Computer> computerForm = formFactory.form(Computer.class).bindFromRequest();
-        if(computerForm.hasErrors()) {
-            return badRequest(views.html.createForm.render(computerForm));
+    	Mram c1= new Mram(); //objeto k guarla los datos de la interfaz
+        Form<Mram> mramForm = formFactory.form(Mram.class).bindFromRequest();
+        if(mramForm.hasErrors()) {
+            return badRequest(views.html.createRam.render(mramForm));
         }
         
-        c1=computerForm.get();
-        c1.id=(long) ++cont;
+        c1=mramForm.get();
+        c1.id=(long) ++cont1;
         c1.save();
         
         //computerForm.get().save();
-        flash("success", "Computer " + computerForm.get().name + " has been created");
+        flash("success", "Mram " + mramForm.get().tipo + " has been created");
         return GO_HOME;
     }
     
     /**
      * Handle computer deletion
      */
-    public Result delete(Long id) {
-        Computer.find.ref(id).delete();
-        flash("success", "Computer has been deleted");
+    public Result delete1(Long id) {
+        Mram.find.ref(id).delete();
+        flash("success", "Mram has been deleted");
         return GO_HOME;
     }
     
