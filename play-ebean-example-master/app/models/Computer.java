@@ -17,7 +17,7 @@ import com.avaje.ebean.*;
 public class Computer extends Model {
 
     private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionID1 = 1L;
 	@Id
    public Long id;
     
@@ -33,8 +33,6 @@ public class Computer extends Model {
     @ManyToOne
     public Company company;
     
-    //@ManyToOne
-    //public Custodio custodio;
     /**
      * Generic query helper for entity Computer with id Long
      */
@@ -57,6 +55,5 @@ public class Computer extends Model {
                 .fetch("company")
                 .findPagedList(page, pageSize);
     }
-    
 }
 
