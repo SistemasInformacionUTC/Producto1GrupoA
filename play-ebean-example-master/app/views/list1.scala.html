@@ -77,26 +77,26 @@
 
                 @for(mram <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.HomeController.edit1(mram.id)">@computer.name</a></td>
+                        <td><a href="@routes.HomeController.edit1(mram.id)">@mram.tipo</a></td>
                         <td>
-                            @if(computer.introduced == null) {
+                            @if(mram.introduced == null) {
                                 <em>-</em>
                             } else {
-                                @computer.introduced.format("dd MMM yyyy")
+                                @mram.introduced.format("string")
                             }
                         </td>
                         <td>
-                            @if(computer.discontinued == null) {
+                            @if(mram.discontinued == null) {
                                 <em>-</em>
                             } else {
-                                @computer.discontinued.format("dd MMM yyyy")
+                                @mram.discontinued.format("string")
                             }
                         </td>
                         <td>
-                            @if(computer.company == null) {
+                            @if(mram.company == null) {
                                 <em>-</em>
                             } else {
-                                @computer.company.name
+                                @mram.company.tipo
                             }
                         </td>
                     </tr>
