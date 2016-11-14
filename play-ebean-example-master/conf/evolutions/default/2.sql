@@ -620,7 +620,12 @@ insert into computer (id,name,introduced,discontinued,company_id) values (572,'D
 insert into computer (id,name,introduced,discontinued,company_id) values (573,'Gateway LT3103U','2008-01-01',null,null);
 insert into computer (id,name,introduced,discontinued,company_id) values (574,'iPhone 4S','2011-10-14',null,1);
 
+insert into custodio(id,name,edad,computadoras,computer_id) values (1,'Evelyn',22,2,1);
+insert into custodio(id,name,edad,computadoras,computer_id) values (2,'Yomara',24,5,2);
+
+
 # --- !Downs
 
 delete from computer;
 delete from company;
+delete from custodio;
