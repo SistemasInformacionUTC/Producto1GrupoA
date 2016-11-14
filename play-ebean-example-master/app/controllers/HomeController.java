@@ -136,6 +136,100 @@ public class HomeController  extends Controller {
         return GO_HOME;
     }
     
+    //MEMORIA RAM
+    public Result list1(int page, String sortBy, String order, String filter) {
+        return ok(
+            views.html.list1.render(
+                Mram.page(page, 10, sortBy, order, filter),
+                sortBy, order, filter
+            )
+        );
+    }
+    
+    /**
+     * Display the 'edit form' of a existing Computer.
+     *
+     * @param id Id of the computer to edit
+     */
+    /** public Result edit1(Long id) {
+        Form<Mram> computerForm = formFactory.form(Computer.class).fill(
+            Computer.find.byId(id)
+        );
+        return ok(
+            views.html.editForm.render(id, computerForm)
+        );
+    } */
+    /**
+     * Handle the 'edit form' submission 
+     *
+     * @param id Id of the computer to edit
+     */
+    public Result update1(Long id) throws PersistenceException {
+        Form<Mram> mramForm = formFactory.form(Mram.class).bindFromRequest();
+        if(mramForm.hasErrors()) {
+            return badRequest(views.html.editForm1.render(id, mramForm));
+        }
+        Transaction txn = Ebean.beginTransaction();
+        try {
+            Mram savedMram = Mram.find.byId(id);
+            if (savedMram != null) {
+                Mram newComputerData = mramForm.get();
+                savedMram.company = newComputerData.company;
+                savedMram.pines = newComputerData.pines;
+                savedMram.capacidadm = newComputerData.capacidadm;
+                savedMram.tipo = newComputerData.tipo;
+
+                savedMram.update();
+                flash("success", "Mram " + mramForm.get().tipo + " has been updated");
+                txn.commit();
+            }
+        } finally {
+            txn.end();
+        }
+
+        return GO_HOME;
+    }
+    
+    /**
+     * Display the 'new computer form'.
+     */
+    public Result create() {
+        Form<Computer> computerForm = formFactory.form(Computer.class);
+        return ok(
+                views.html.createForm.render(computerForm)
+        );
+    }
+    
+    /**
+     * Handle the 'new computer form' submission 
+     */
+    private static long cont=574;
+    public Result save() {
+    	
+    	Computer c1= new Computer(); //objeto k guarla los datos de la interfaz
+        Form<Computer> computerForm = formFactory.form(Computer.class).bindFromRequest();
+        if(computerForm.hasErrors()) {
+            return badRequest(views.html.createForm.render(computerForm));
+        }
+        
+        c1=computerForm.get();
+        c1.id=(long) ++cont;
+        c1.save();
+        
+        //computerForm.get().save();
+        flash("success", "Computer " + computerForm.get().name + " has been created");
+        return GO_HOME;
+    }
+    
+    /**
+     * Handle computer deletion
+     */
+    public Result delete(Long id) {
+        Computer.find.ref(id).delete();
+        flash("success", "Computer has been deleted");
+        return GO_HOME;
+    }
+    
 
 }
             
