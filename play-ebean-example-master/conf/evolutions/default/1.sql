@@ -16,6 +16,14 @@ create table computer (
   company_id                bigint,
   constraint pk_computer primary key (id))
 ;
+create table Mram (
+  id                        bigint not null,
+  tipo                      varchar(255),
+  fabricante               varchar(255),
+  apacidadm              varchar(255),
+  company_id                bigint,
+  constraint pk_mran primary key (id))
+;
 
 create sequence company_seq start with 1000;
 
