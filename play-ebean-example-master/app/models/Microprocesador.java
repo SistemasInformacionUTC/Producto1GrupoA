@@ -9,36 +9,32 @@ import play.data.validation.*;
 import com.avaje.ebean.*;
 
 /**
- * Computer entity managed by Ebean
+ * Microprocesador entity managed by Ebean
  */
 @Entity 
-public class Computer extends Model {
+public class Microprocesador extends Model {
 
-    private static final long serialVersionUID = 1L;
     private static final long serialVersionUID1 = 1L;
 
 	@Id
    public Long id;
     
     @Constraints.Required
-    public String name;
+    public Integer velocidad;
     
-    @Formats.DateTime(pattern="yyyy-MM-dd")
-    public Date introduced;
-    
-    @Formats.DateTime(pattern="yyyy-MM-dd")
-    public Date discontinued;
+    @Constraints.Required
+    public Integer capacidad;
     
     @ManyToOne
-    public Company company;
+    public Computer computer;
     
     /**
-     * Generic query helper for entity Computer with id Long
+     * Generic query helper for entity Microprocesador with id Long
      */
-    public static Find<Long,Computer> find = new Find<Long,Computer>(){};
+    public static Find<Long,Microprocesador> find = new Find<Long,Microprocesador>(){};
     
     /**
-     * Return a paged list of computer
+     * Return a paged list of microprocesador
      *
      * @param page Page to display
      * @param pageSize Number of computers per page
@@ -46,12 +42,12 @@ public class Computer extends Model {
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */
-    public static PagedList<Computer> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static PagedList<Microprocesador> page(int page, int pageSize, String sortBy, String order, String filter) {
         return
             find.where()
-                .ilike("name", "%" + filter + "%")
+                .ilike("velocidad", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
-                .fetch("company")
+                .fetch("computer")
                 .findPagedList(page, pageSize);
     }
     

@@ -17,10 +17,13 @@ import javax.persistence.PersistenceException;
 public class HomeController  extends Controller {
 
     private FormFactory formFactory;
+    private FormFactory formFactory1;
+    
 
     @Inject
-    public HomeController(FormFactory formFactory) {
+    public HomeController(FormFactory formFactory, FormFactory formFactory1) {
         this.formFactory = formFactory;
+        this.formFactory = formFactory1;
     }
     /**
      * This result directly redirect to application home.
@@ -47,6 +50,15 @@ public class HomeController  extends Controller {
         return ok(
             views.html.list.render(
                 Computer.page(page, 10, sortBy, order, filter),
+                sortBy, order, filter
+            )
+        );
+    }
+    
+    public Result listmicro(int page, String sortBy, String order, String filter) {
+        return ok(
+            views.html.listmicro.render(
+                Microprocesador.page(page, 10, sortBy, order, filter),
                 sortBy, order, filter
             )
         );
