@@ -1,8 +1,10 @@
 package models;
 import java.util.*;
+
 import javax.persistence.*;
 
 import com.avaje.ebean.Model;
+
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -31,6 +33,8 @@ public class Computer extends Model {
     @ManyToOne
     public Company company;
     
+    //@ManyToOne
+    //public Custodio custodio;
     /**
      * Generic query helper for entity Computer with id Long
      */
